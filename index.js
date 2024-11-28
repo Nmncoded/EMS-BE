@@ -11,11 +11,14 @@ const app = express();
 
 // CORS Configuration
 const corsOptions = {
-  origin: ['*'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
-  optionsSuccessStatus: 200
+  origin: [
+    'http://localhost:5173',  // Your local development frontend
+    'https://ems-fe-pearl.vercel.app',
+  ],
+  // methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  // allowedHeaders: ['Content-Type', 'Authorization'],
+  // credentials: true,
+  // optionsSuccessStatus: 200
 };
 
 // Middleware
@@ -23,7 +26,7 @@ app.use(bodyParser.json());
 app.use(cors(corsOptions));
 
 // Pre-flight requests handler
-app.options('*', cors(corsOptions));
+// app.options('*', cors(corsOptions));
 
 // Routes
 app.use("/", emailRoutes);

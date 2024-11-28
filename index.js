@@ -12,9 +12,8 @@ const app = express();
 // CORS Configuration
 const corsOptions = {
   origin: [
-    'http://localhost:5173',  // Your local development frontend
+    'http://localhost:5173',  // local development frontend
     'https://email-marketing-sequence-psi.vercel.app',
-    'https://ems-be-pearl.vercel.app'
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
@@ -22,10 +21,17 @@ const corsOptions = {
 };
 
 // Middleware
-app.use(bodyParser.json());
 app.use(cors(corsOptions));
-
 app.options('*', cors()); // Respond to preflight requests
+
+
+app.use(bodyParser.json());
+
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`); 
+  next();
+});
+
 
 
 // Routes

@@ -13,20 +13,19 @@ const app = express();
 const corsOptions = {
   origin: [
     'http://localhost:5173',  // Your local development frontend
-    'https://email-marketing-sequence-psi.vercel.app/'
+    'https://email-marketing-sequence-psi.vercel.app',
+    'https://ems-be-pearl.vercel.app'
   ],
-  // methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  // allowedHeaders: ['Content-Type', 'Authorization'],
-  // credentials: true,
-  // optionsSuccessStatus: 200
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+  optionsSuccessStatus: 200
 };
 
 // Middleware
 app.use(bodyParser.json());
 app.use(cors(corsOptions));
 
-// Pre-flight requests handler
-app.options('*', cors(corsOptions));
 
 // Routes
 app.use("/", emailRoutes);

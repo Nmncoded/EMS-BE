@@ -13,8 +13,7 @@ const app = express();
 const corsOptions = {
   origin: [
     'http://localhost:5173',  // Your local development frontend
-    'https://ems-fe-pearl.vercel.app',
-    'https://ems-be-pearl.vercel.app'
+    'https://email-marketing-sequence-psi.vercel.app/'
   ],
   // methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   // allowedHeaders: ['Content-Type', 'Authorization'],

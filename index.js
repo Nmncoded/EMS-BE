@@ -9,9 +9,21 @@ const emailRoutes = require("./routes/emailRoutes");
 
 const app = express();
 
+// CORS Configuration
+const corsOptions = {
+  origin: ['*'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+
 // Middleware
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors(corsOptions));
+
+// Pre-flight requests handler
+app.options('*', cors(corsOptions));
 
 // Routes
 app.use("/", emailRoutes);

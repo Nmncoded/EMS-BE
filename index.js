@@ -26,7 +26,7 @@ app.use(bodyParser.json());
 app.use(cors(corsOptions));
 
 // Pre-flight requests handler
-// app.options('*', cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 // Routes
 app.use("/", emailRoutes);
